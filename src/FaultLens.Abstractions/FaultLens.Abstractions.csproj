@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="D:\Projects\.Net_Core\FaultLens\README.md" />
+  </ItemGroup>
+
 </Project>
