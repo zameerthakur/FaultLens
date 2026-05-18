@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33529.622
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{762F5B51-C937-439B-B868-0D48738006D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLens.Abstractions", "src\FaultLens.Abstractions\FaultLens.Abstractions.csproj", "{877EF78D-CF1B-41BC-9580-09D863C24D05}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2176BE04-B2EC-45D4-B96E-ACD27FA5B28E}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Debug|x64.Build.0 = Debug|Any CPU
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Debug|x86.Build.0 = Debug|Any CPU
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Release|x64.ActiveCfg = Release|Any CPU
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Release|x64.Build.0 = Release|Any CPU
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Release|x86.ActiveCfg = Release|Any CPU
+		{877EF78D-CF1B-41BC-9580-09D863C24D05}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{877EF78D-CF1B-41BC-9580-09D863C24D05} = {762F5B51-C937-439B-B868-0D48738006D9}
+	EndGlobalSection
+EndGlobal
