@@ -427,3 +427,50 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# ---------------------------------------
+# FaultLens
+# ---------------------------------------
+
+# PostgreSQL local/dev files
+*.db
+*.db-shm
+*.db-wal
+
+# Downloaded AI model caches
+FaultLens.Models/
+models/
+model-cache/
+
+# ONNX model files
+*.onnx
+
+# Temporary extracted model packages
+.extract-*/
+
+# Local AI cache folders
+.cache/FaultLens/
+temp/FaultLens/
+
+# Runtime logs
+*.runtime.log
+
+# Exception export files
+*.exceptions.json
+*.exceptions.zip
+
+# Local operational snapshots
+snapshots/
+
+# Dashboard temporary assets
+dashboard-cache/
+
+# Generated package artifacts
+artifacts/packages/
+
+# Docker local volumes
+docker-data/
+
+# Local environment overrides
+appsettings.Local.json
+.env.local
