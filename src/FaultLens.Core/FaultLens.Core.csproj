@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FaultLens.Abstractions\FaultLens.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>
