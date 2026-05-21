@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37301.10 d17.14
+VisualStudioVersion = 17.14.37301.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{762F5B51-C937-439B-B868-0D48738006D9}"
 EndProject
@@ -14,6 +14,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLens.Client", "src\FaultLens.Client\FaultLens.Client.csproj", "{484B27EB-D128-48DB-BBA8-C82C2D3FCF18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLens.Client.Tests", "tests\FaultLens.Client.Tests\FaultLens.Client.Tests.csproj", "{7A86C706-2C89-45FD-BC68-D52A7A153814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLens.Server", "src\FaultLens.Server\FaultLens.Server.csproj", "{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,30 @@ Global
 		{484B27EB-D128-48DB-BBA8-C82C2D3FCF18}.Release|x64.Build.0 = Release|Any CPU
 		{484B27EB-D128-48DB-BBA8-C82C2D3FCF18}.Release|x86.ActiveCfg = Release|Any CPU
 		{484B27EB-D128-48DB-BBA8-C82C2D3FCF18}.Release|x86.Build.0 = Release|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Debug|x64.Build.0 = Debug|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Debug|x86.Build.0 = Debug|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Release|x64.ActiveCfg = Release|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Release|x64.Build.0 = Release|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Release|x86.ActiveCfg = Release|Any CPU
+		{7A86C706-2C89-45FD-BC68-D52A7A153814}.Release|x86.Build.0 = Release|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Debug|x64.Build.0 = Debug|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Release|x64.ActiveCfg = Release|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Release|x64.Build.0 = Release|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +110,8 @@ Global
 		{697B97CA-D8AB-447A-B7E3-9A808AAA0E17} = {762F5B51-C937-439B-B868-0D48738006D9}
 		{76BF30CB-9850-48CC-9046-2F0E1C9B179F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{484B27EB-D128-48DB-BBA8-C82C2D3FCF18} = {762F5B51-C937-439B-B868-0D48738006D9}
+		{7A86C706-2C89-45FD-BC68-D52A7A153814} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB} = {762F5B51-C937-439B-B868-0D48738006D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2176BE04-B2EC-45D4-B96E-ACD27FA5B28E}

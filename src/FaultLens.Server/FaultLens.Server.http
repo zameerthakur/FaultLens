@@ -1,0 +1,6 @@
+@FaultLens.Server_HostAddress = http://localhost:5134
+
+GET {{FaultLens.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

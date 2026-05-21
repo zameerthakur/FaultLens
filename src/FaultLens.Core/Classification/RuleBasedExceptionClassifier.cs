@@ -1,4 +1,5 @@
 using FaultLens.Abstractions.Enums;
+using FaultLens.Abstractions.Interfaces;
 using FaultLens.Abstractions.Models;
 using FaultLens.Core.Normalization;
 
@@ -7,7 +8,7 @@ namespace FaultLens.Core.Classification;
 /// <summary>
 /// Provides deterministic rule-based exception classification.
 /// </summary>
-public sealed class RuleBasedExceptionClassifier
+public sealed class RuleBasedExceptionClassifier : IExceptionClassifier
 {
     /// <summary>
     /// Classifies the specified exception record into an operational category.
