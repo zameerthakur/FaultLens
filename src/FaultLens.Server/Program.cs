@@ -1,15 +1,23 @@
-var builder = WebApplication.CreateBuilder(args);
+using FaultLens.Abstractions.Interfaces;
+using FaultLens.Core.Classification;
+using FaultLens.Core.Fingerprinting;
+using FaultLens.Core.Grouping;
+using FaultLens.Core.Processing;
 
-// Add services to the container.
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+builder.Services.AddSingleton<IExceptionFingerprintGenerator, DefaultExceptionFingerprintGenerator>();
+builder.Services.AddSingleton<IExceptionClassifier, RuleBasedExceptionClassifier>();
+builder.Services.AddScoped<IExceptionProcessingService, ExceptionProcessingService>();
+builder.Services.AddScoped<IExceptionGroupingService, DefaultExceptionGroupingService>();
 
-// Configure the HTTP request pipeline.
+WebApplication app = builder.Build();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -17,8 +25,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 

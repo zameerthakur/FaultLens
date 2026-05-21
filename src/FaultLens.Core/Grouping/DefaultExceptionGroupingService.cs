@@ -1,7 +1,6 @@
 using FaultLens.Abstractions.Enums;
 using FaultLens.Abstractions.Interfaces;
 using FaultLens.Abstractions.Models;
-using FaultLens.Core.Classification;
 
 namespace FaultLens.Core.Grouping;
 
@@ -11,20 +10,14 @@ namespace FaultLens.Core.Grouping;
 public sealed class DefaultExceptionGroupingService : IExceptionGroupingService
 {
     private readonly IExceptionFingerprintGenerator _fingerprintGenerator;
-    private readonly RuleBasedExceptionClassifier _classifier;
+    private readonly IExceptionClassifier _classifier;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DefaultExceptionGroupingService"/> class.
     /// </summary>
-    /// <param name="fingerprintGenerator">
-    /// The exception fingerprint generator.
-    /// </param>
-    /// <param name="classifier">
-    /// The rule-based exception classifier.
-    /// </param>
     public DefaultExceptionGroupingService(
         IExceptionFingerprintGenerator fingerprintGenerator,
-        RuleBasedExceptionClassifier classifier)
+        IExceptionClassifier classifier)
     {
         _fingerprintGenerator = fingerprintGenerator;
         _classifier = classifier;

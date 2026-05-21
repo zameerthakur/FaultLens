@@ -16,6 +16,11 @@ public sealed class FaultLensHealthResponse
     public string? Message { get; set; }
 
     /// <summary>
+    /// Gets or sets the current FaultLens server version.
+    /// </summary>
+    public string? Version { get; set; }
+
+    /// <summary>
     /// Gets or sets the UTC timestamp when the health status was checked.
     /// </summary>
     public DateTime CheckedAtUtc { get; set; } = DateTime.UtcNow;
