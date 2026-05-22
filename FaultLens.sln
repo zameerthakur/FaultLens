@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLens.Client.Tests", "t
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLens.Server", "src\FaultLens.Server\FaultLens.Server.csproj", "{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLens.Storage.PostgreSql", "src\FaultLens.Storage.PostgreSql\FaultLens.Storage.PostgreSql.csproj", "{B3635BBE-1A58-4065-A1B9-615D297C2148}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,18 @@ Global
 		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Release|x64.Build.0 = Release|Any CPU
 		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Release|x86.ActiveCfg = Release|Any CPU
 		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB}.Release|x86.Build.0 = Release|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Debug|x64.Build.0 = Debug|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Debug|x86.Build.0 = Debug|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Release|x64.ActiveCfg = Release|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Release|x64.Build.0 = Release|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Release|x86.ActiveCfg = Release|Any CPU
+		{B3635BBE-1A58-4065-A1B9-615D297C2148}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +126,7 @@ Global
 		{484B27EB-D128-48DB-BBA8-C82C2D3FCF18} = {762F5B51-C937-439B-B868-0D48738006D9}
 		{7A86C706-2C89-45FD-BC68-D52A7A153814} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{F98401FD-CB5A-4A0E-AFFB-CA40B96F72DB} = {762F5B51-C937-439B-B868-0D48738006D9}
+		{B3635BBE-1A58-4065-A1B9-615D297C2148} = {762F5B51-C937-439B-B868-0D48738006D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2176BE04-B2EC-45D4-B96E-ACD27FA5B28E}

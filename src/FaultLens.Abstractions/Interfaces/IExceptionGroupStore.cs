@@ -24,6 +24,22 @@ public interface IExceptionGroupStore
         CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Saves a new exception group or updates an existing group with the same fingerprint.
+    /// </summary>
+    /// <param name="exceptionGroup">
+    /// The exception group to save or update.
+    /// </param>
+    /// <param name="cancellationToken">
+    /// The cancellation token.
+    /// </param>
+    /// <returns>
+    /// The saved or updated exception group.
+    /// </returns>
+    Task<ExceptionGroup> UpsertAsync(
+        ExceptionGroup exceptionGroup,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Gets an exception group by its fingerprint.
     /// </summary>
     /// <param name="fingerprint">

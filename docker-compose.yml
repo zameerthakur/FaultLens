@@ -1,0 +1,28 @@
+services:
+  faultlens-postgres:
+    image: pgvector/pgvector:pg16
+    container_name: faultlens-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: faultlens
+      POSTGRES_USER: faultlens
+      POSTGRES_PASSWORD: faultlens_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - faultlens-postgres-data:/var/lib/postgresql/data
+    networks:
+      - faultlens-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U faultlens -d faultlens"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  faultlens-postgres-data:
+    name: faultlens-postgres-data
+
+networks:
+  faultlens-network:
+    name: faultlens-network

@@ -1,6 +1,5 @@
 using FaultLens.Abstractions.Interfaces;
 using FaultLens.Abstractions.Models;
-using FaultLens.Core.Processing;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FaultLens.Server.Controllers;
@@ -13,6 +12,9 @@ namespace FaultLens.Server.Controllers;
 public sealed class ExceptionsController : ControllerBase
 {
     private readonly IExceptionProcessingService _processingService;
+    private readonly IExceptionGroupingService _groupingService;
+    private readonly IExceptionStore _exceptionStore;
+    private readonly IExceptionGroupStore _groupStore;
     private readonly ILogger<ExceptionsController> _logger;
 
     /// <summary>
@@ -20,35 +22,51 @@ public sealed class ExceptionsController : ControllerBase
     /// </summary>
     public ExceptionsController(
         IExceptionProcessingService processingService,
+        IExceptionGroupingService groupingService,
+        IExceptionStore exceptionStore,
+        IExceptionGroupStore groupStore,
         ILogger<ExceptionsController> logger)
     {
         _processingService = processingService;
+        _groupingService = groupingService;
+        _exceptionStore = exceptionStore;
+        _groupStore = groupStore;
         _logger = logger;
     }
 
     /// <summary>
     /// Ingests a single exception record.
     /// </summary>
-    /// <param name="exceptionRecord">
-    /// The exception record to ingest.
-    /// </param>
-    /// <returns>
-    /// An HTTP response.
-    /// </returns>
     [HttpPost]
-    public ActionResult Ingest(
-        [FromBody] ExceptionRecord exceptionRecord)
+    public async Task<ActionResult> Ingest(
+        [FromBody] ExceptionRecord exceptionRecord,
+        CancellationToken cancellationToken)
     {
         if (exceptionRecord is null)
         {
             return BadRequest();
         }
 
+        exceptionRecord.Id = Guid.NewGuid();
+
         ExceptionProcessingResult result =
             _processingService.Process(exceptionRecord);
 
+        ExceptionGroup group =
+            await _groupingService.GroupAsync(
+                exceptionRecord,
+                cancellationToken);
+
+        await _exceptionStore.SaveAsync(
+            exceptionRecord,
+            cancellationToken);
+
+        await _groupStore.UpsertAsync(
+            group,
+            cancellationToken);
+
         _logger.LogInformation(
-            "Processed exception {ExceptionId} with fingerprint {Fingerprint}.",
+            "Stored exception {ExceptionId} with fingerprint {Fingerprint}.",
             result.ExceptionId,
             result.Fingerprint);
 
@@ -58,15 +76,10 @@ public sealed class ExceptionsController : ControllerBase
     /// <summary>
     /// Ingests multiple exception records.
     /// </summary>
-    /// <param name="exceptionRecords">
-    /// The exception records to ingest.
-    /// </param>
-    /// <returns>
-    /// An HTTP response.
-    /// </returns>
     [HttpPost("batch")]
-    public ActionResult IngestBatch(
-        [FromBody] IReadOnlyCollection<ExceptionRecord> exceptionRecords)
+    public async Task<ActionResult> IngestBatch(
+        [FromBody] IReadOnlyCollection<ExceptionRecord> exceptionRecords,
+        CancellationToken cancellationToken)
     {
         if (exceptionRecords is null || exceptionRecords.Count == 0)
         {
@@ -75,12 +88,29 @@ public sealed class ExceptionsController : ControllerBase
 
         foreach (ExceptionRecord exceptionRecord in exceptionRecords)
         {
-            _processingService.Process(exceptionRecord);
-        }
+            exceptionRecord.Id = Guid.NewGuid();
 
-        _logger.LogInformation(
-            "Processed batch containing {Count} exception records.",
-            exceptionRecords.Count);
+            ExceptionProcessingResult result =
+                _processingService.Process(exceptionRecord);
+
+            ExceptionGroup group =
+                await _groupingService.GroupAsync(
+                    exceptionRecord,
+                    cancellationToken);
+
+            await _exceptionStore.SaveAsync(
+                exceptionRecord,
+                cancellationToken);
+
+            await _groupStore.UpsertAsync(
+                group,
+                cancellationToken);
+
+            _logger.LogInformation(
+                "Stored exception {ExceptionId} with fingerprint {Fingerprint}.",
+                result.ExceptionId,
+                result.Fingerprint);
+        }
 
         return Accepted();
     }
