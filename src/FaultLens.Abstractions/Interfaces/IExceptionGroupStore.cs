@@ -1,3 +1,4 @@
+using FaultLens.Abstractions.Contracts;
 using FaultLens.Abstractions.Models;
 
 namespace FaultLens.Abstractions.Interfaces;
@@ -53,5 +54,21 @@ public interface IExceptionGroupStore
     /// </returns>
     Task<ExceptionGroup?> GetByFingerprintAsync(
         string fingerprint,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Searches grouped exception patterns.
+    /// </summary>
+    /// <param name="limit">
+    /// The maximum number of groups to return.
+    /// </param>
+    /// <param name="cancellationToken">
+    /// The cancellation token.
+    /// </param>
+    /// <returns>
+    /// The matching grouped exception patterns.
+    /// </returns>
+    Task<ExceptionGroupSearchResponse> SearchAsync(
+        int limit = 100,
         CancellationToken cancellationToken = default);
 }

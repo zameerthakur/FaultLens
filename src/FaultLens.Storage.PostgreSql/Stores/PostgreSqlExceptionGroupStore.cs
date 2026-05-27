@@ -1,3 +1,4 @@
+using FaultLens.Abstractions.Contracts;
 using FaultLens.Abstractions.Interfaces;
 using FaultLens.Abstractions.Models;
 using FaultLens.Storage.PostgreSql.Context;
@@ -95,5 +96,36 @@ public sealed class PostgreSqlExceptionGroupStore : IExceptionGroupStore
         return entity is null
             ? null
             : ExceptionGroupMapper.ToModel(entity);
+    }
+
+    /// <inheritdoc />
+    public async Task<ExceptionGroupSearchResponse> SearchAsync(
+        int limit = 100,
+        CancellationToken cancellationToken = default)
+    {
+        if (limit <= 0)
+        {
+            limit = 100;
+        }
+
+        IQueryable<ExceptionGroupEntity> query =
+            _dbContext.ExceptionGroups.AsNoTracking();
+
+        int totalCount =
+            await query.CountAsync(cancellationToken);
+
+        List<ExceptionGroup> items =
+            await query
+                .OrderByDescending(group => group.LastOccurredAtUtc)
+                .Take(limit)
+                .Select(group => ExceptionGroupMapper.ToModel(group))
+                .ToListAsync(cancellationToken);
+
+        return new ExceptionGroupSearchResponse
+        {
+            Items = items,
+            TotalCount = totalCount,
+            Limit = limit
+        };
     }
 }
