@@ -101,11 +101,17 @@ public sealed class PostgreSqlExceptionGroupStore : IExceptionGroupStore
     /// <inheritdoc />
     public async Task<ExceptionGroupSearchResponse> SearchAsync(
         int limit = 100,
+        int skip = 0,
         CancellationToken cancellationToken = default)
     {
         if (limit <= 0)
         {
             limit = 100;
+        }
+
+        if (skip < 0)
+        {
+            skip = 0;
         }
 
         IQueryable<ExceptionGroupEntity> query =
@@ -117,6 +123,7 @@ public sealed class PostgreSqlExceptionGroupStore : IExceptionGroupStore
         List<ExceptionGroup> items =
             await query
                 .OrderByDescending(group => group.LastOccurredAtUtc)
+                .Skip(skip)
                 .Take(limit)
                 .Select(group => ExceptionGroupMapper.ToModel(group))
                 .ToListAsync(cancellationToken);
@@ -125,7 +132,8 @@ public sealed class PostgreSqlExceptionGroupStore : IExceptionGroupStore
         {
             Items = items,
             TotalCount = totalCount,
-            Limit = limit
+            Limit = limit,
+            Skip = skip
         };
     }
 }

@@ -62,6 +62,9 @@ public interface IExceptionGroupStore
     /// <param name="limit">
     /// The maximum number of groups to return.
     /// </param>
+    /// <param name="skip">
+    /// The number of groups to skip.
+    /// </param>
     /// <param name="cancellationToken">
     /// The cancellation token.
     /// </param>
@@ -70,5 +73,6 @@ public interface IExceptionGroupStore
     /// </returns>
     Task<ExceptionGroupSearchResponse> SearchAsync(
         int limit = 100,
+        int skip = 0,
         CancellationToken cancellationToken = default);
 }

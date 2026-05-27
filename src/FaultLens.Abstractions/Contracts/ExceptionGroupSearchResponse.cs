@@ -22,4 +22,9 @@ public sealed class ExceptionGroupSearchResponse
     /// Gets or sets the applied result limit.
     /// </summary>
     public int Limit { get; set; }
+
+    /// <summary>
+    /// Gets or sets the number of skipped groups.
+    /// </summary>
+    public int Skip { get; set; }
 }

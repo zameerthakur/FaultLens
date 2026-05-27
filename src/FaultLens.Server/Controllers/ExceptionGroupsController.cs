@@ -25,13 +25,20 @@ public sealed class ExceptionGroupsController : ControllerBase
     /// <summary>
     /// Gets grouped exception patterns.
     /// </summary>
+    /// <summary>
+    /// Gets grouped exception patterns.
+    /// </summary>
     [HttpGet]
     public async Task<ActionResult<ExceptionGroupSearchResponse>> GetGroups(
         [FromQuery] int limit = 100,
+        [FromQuery] int skip = 0,
         CancellationToken cancellationToken = default)
     {
         ExceptionGroupSearchResponse response =
-            await _groupStore.SearchAsync(limit, cancellationToken);
+            await _groupStore.SearchAsync(
+                limit,
+                skip,
+                cancellationToken);
 
         return Ok(response);
     }
