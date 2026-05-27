@@ -46,4 +46,9 @@ public sealed class ExceptionSearchRequest
     /// Gets or sets the maximum number of results to return.
     /// </summary>
     public int Limit { get; set; } = 100;
+
+    /// <summary>
+    /// Gets or sets the number of records to skip.
+    /// </summary>
+    public int Skip { get; set; }
 }

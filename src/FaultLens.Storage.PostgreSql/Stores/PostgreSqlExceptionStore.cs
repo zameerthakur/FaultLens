@@ -93,9 +93,13 @@ public sealed class PostgreSqlExceptionStore : IExceptionStore
 
         int totalCount = await query.CountAsync(cancellationToken);
 
+        int limit = request.Limit <= 0 ? 100 : request.Limit;
+        int skip = request.Skip < 0 ? 0 : request.Skip;
+
         List<ExceptionRecord> items = await query
             .OrderByDescending(entity => entity.OccurredAtUtc)
-            .Take(request.Limit)
+            .Skip(skip)
+            .Take(limit)
             .Select(entity => ExceptionRecordMapper.ToModel(entity))
             .ToListAsync(cancellationToken);
 
@@ -103,7 +107,8 @@ public sealed class PostgreSqlExceptionStore : IExceptionStore
         {
             Items = items,
             TotalCount = totalCount,
-            Limit = request.Limit
+            Limit = limit,
+            Skip = skip
         };
     }
 }

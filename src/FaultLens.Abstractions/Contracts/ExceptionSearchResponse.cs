@@ -21,4 +21,9 @@ public sealed class ExceptionSearchResponse
     /// Gets or sets the maximum number of records requested.
     /// </summary>
     public int Limit { get; set; }
+
+    /// <summary>
+    /// Gets or sets the number of skipped records.
+    /// </summary>
+    public int Skip { get; set; }
 }
